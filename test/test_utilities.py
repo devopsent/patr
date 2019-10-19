@@ -10,6 +10,7 @@ from patr import (
 from io import open
 import pytest
 
+
 def test_msg(capsys):
     defaults.DEBUG = False
     msg = 'lalala'

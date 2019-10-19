@@ -7,13 +7,19 @@ from __future__ import print_function
 import csv
 import distutils
 import os
-
-CUSTOMER_NAME = os.environ.get('CUSTOMER_NAME', 'client')
-
+PY3 = False
 try:
     from collections import OrderedDict
+    PY3 = True
 except ImportError:
-    from ordereddict import OrderedDict
+    pass
+
+if not PY3:
+    try:
+        from ordereddict import OrderedDict
+    except ImportError:
+        raise
+CUSTOMER_NAME = os.environ.get('CUSTOMER_NAME', 'client')
 from patr import utilities
 
 def load_data_from_csv(fpath):

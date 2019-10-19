@@ -2,11 +2,18 @@
 # pylint: disable=missing-docstring,unused-variable,line-too-long
 from __future__ import print_function
 import sys
+PY3 = False
 try:
     from collections import OrderedDict
+    PY3 = True
 except ImportError:
-    from ordereddict import OrderedDict
-from patr import utilities
+    pass
+
+if not PY3:
+    try:
+        from ordereddict import OrderedDict
+    except ImportError:
+        raise
 
 
 def cool_validator(hdata, field, cls, extra_line=""):

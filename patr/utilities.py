@@ -4,11 +4,19 @@
 from __future__ import print_function
 
 import os
+from io import open
+PY3 = False
 try:
     from collections import OrderedDict
+    PY3 = True
 except ImportError:
-    from ordereddict import OrderedDict
-from io import open
+    pass
+
+if not PY3:
+    try:
+        from ordereddict import OrderedDict
+    except ImportError:
+        raise
 from patr import defaults
 
 

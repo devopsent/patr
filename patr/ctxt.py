@@ -12,10 +12,19 @@ import os
 import sys
 import yaml
 from jinja2 import Template
+PY3 = False
 try:
     from collections import OrderedDict
+    PY3 = True
 except ImportError:
-    from ordereddict import OrderedDict
+    pass
+
+if not PY3:
+    try:
+        from ordereddict import OrderedDict
+    except ImportError:
+        raise
+
 from patr import (
     utilities,
 )
