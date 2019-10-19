@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import pkg_resources
-
-__version__ = pkg_resources.get_distribution('patr').version
+app_name = 'patr'
+__version__ = pkg_resources.get_distribution(app_name).version

@@ -69,7 +69,7 @@ def copy_missing_files(parsed_args, attr_list):
             continue
         if not os.path.exists(path):
             print("File: {path} is missing, generating from default".format(**locals()))
-            utilities.copy_rules(rules_path)
+            utilities.copy_rules(path)
 
 
 def main():
