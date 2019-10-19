@@ -1,0 +1,23 @@
+local ansible_connection=local ansible_python_interpreter=python
+localhost ansible_connection=local ansible_python_interpreter=python
+{% if customer_roles is mapping %}
+{% for role_name in customer_roles.keys() %}
+[{{role_name}}]
+{% if customer_roles[role_name]|default([])|length -%}
+{% for host_entry in customer_roles[role_name] -%}
+{{host_entry}}
+{% endfor -%}
+{% endif -%}
+{% endfor -%}
+{% endif %}
+
+{% if groups is mapping %}
+{% for group_name in groups.keys() %}
+[{{group_name}}]
+{% if groups[group_name]|default([])|length -%}
+{% for host_entry in groups[group_name] -%}
+{{host_entry}}
+{% endfor -%}
+{% endif -%}
+{% endfor %}
+{% endif %}
