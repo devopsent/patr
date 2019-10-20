@@ -33,7 +33,7 @@ class ParsersYamlError(Exception):
 
 
 def parse_yaml_str(data_str):
-    data = yaml.load(data_str)
+    data = yaml.safe_load(data_str)
     if not data:
         raise ParsersYamlError("empty data")
     for attr in ('version', 'data',):
